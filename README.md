@@ -232,15 +232,44 @@ Press `Ctrl + C` to stop the simulation. The script will handle this and disconn
 
 # Configuring Azure Services:
 
+## Resource Group
+1. Create Resource group
+
 ![External Image](screenshot/1.png)
+
+## Create an IoT Hub
+1. In the Azure Portal, search for **IoT Hub** and click **Create**.
+2. Provide a name for the IoT Hub and select a resource group.
+3. Choose the **Free Tier** (if available) for testing purposes and create the IoT Hub.
 
 ![External Image](screenshot/2.png)
 
+## Stroage account
+
+1. Create Stroage account and create container
+
+
+![External Image](screenshot/5.png)
+
 ![External Image](screenshot/3.png)
+
+
+## Stream Analytics Job
+1. In the Azure Portal, search for **Stream Analytics jobs** and click **Create**.
+2. Provide a name for the job and select the appropriate resource group.
+3. Choose **Cloud** as the hosting environment and create the job.
 
 ![External Image](screenshot/4.png)
 
-![External Image](screenshot/5.png)
+
+## 3. Configure Input for Stream Analytics Job
+1. In the Stream Analytics job, go to the **Inputs** section and click **Add**.
+2. Choose **IoT Hub** as the input source.
+3. Provide the following details:
+   - **IoT Hub Namespace**: Select our IoT Hub.
+   - **IoT Hub Policy Name**: Use the **iothubowner** policy.
+   - **Consumer Group**: Use **$Default** or create a new consumer group in our IoT Hub.
+   - **Serialization Format**: Choose **JSON**.
 
 ![External Image](screenshot/6.png)
 
