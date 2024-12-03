@@ -288,10 +288,23 @@ Press `Ctrl + C` to stop the simulation. The script will handle this and disconn
 
 ---
 
-# Results:
-- Highlight key findings, such as:
-    - Aggregated data outputs (e.g., average ice thickness).
-- Include references to sample output files stored in Blob Storage.
+
+# Results
+
+## Key Findings
+
+The Stream Analytics job successfully processed real-time data from IoT sensors and stored the aggregated results in Azure Blob Storage. The key metrics derived from this data include:
+
+- **Average Ice Thickness**: Offers insights into ice conditions over specific time intervals.
+- **Maximum Snow Accumulation**: Shows the highest snow accumulation during those intervals.
+
+## Sample Aggregated Outputs
+
+The processed data is saved in the `output.json` file.
+
+## Accessing the Data
+
+You can access the stored files by navigating to the `iotoutput` container in our Azure Blob Storage account.
 
 # Reflection:
 - Discuss any challenges faced during implementation and how they were addressed.
