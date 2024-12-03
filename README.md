@@ -232,7 +232,7 @@ Press `Ctrl + C` to stop the simulation. The script will handle this and disconn
 
 # Configuring Azure Services:
 
-![External Image](1.png)
+![External Image](screenshot/1.png)
 
 # Accessing Stored Data:
 - Include steps to locate and view the processed data in Azure Blob Storage.
