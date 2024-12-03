@@ -315,9 +315,6 @@ Alternatively, download the file to your local machine for in-depth analysis usi
 
 ![External Image](screenshot/11.png)
 
-# Accessing Stored Data:
-- Include steps to locate and view the processed data in Azure Blob Storage.
-
 # Results
 
 ## Key Findings
