@@ -199,3 +199,99 @@ if __name__ == "__main__":
 
 To stop the simulation, press `Ctrl + C`. The script will handle the disconnection gracefully.
 
+
+# Usage Instructions
+
+## Running the IoT Sensor Simulation:
+- Install python from the official website
+
+## Write Script:
+
+Create a new file and save it with the `.py` extension.
+
+```python
+from datetime import datetime
+import time
+import random
+from azure.iot.device import IoTHubDeviceClient, Message
+
+CONNECTION_STRING = ""  # connection string for each sensor
+
+def get_telemetry():
+    return {
+        "location": "Fifth Avenue",
+        "iceThickness": round(random.uniform(5, 50), 2),
+        "surfaceTemperature": round(random.uniform(-10, 5), 1),
+        "snowAccumulation": round(random.uniform(0, 20), 1),
+        "externalTemperature": round(random.uniform(-20, 10), 1),
+        "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ")
+    }
+
+def main():
+    client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+    print("Sending telemetry to IoT Hub...")
+    try:
+        while True:
+            telemetry = get_telemetry()
+            message = Message(str(telemetry))
+            client.send_message(message)
+            print(f"Sent message: {message}")
+            time.sleep(10)
+    except KeyboardInterrupt:
+        print("Stopped sending messages.")
+    finally:
+        client.disconnect()
+
+if __name__ == "__main__":
+    main()
+```
+
+This Python script simulates an IoT device sending telemetry data to an Azure IoT Hub:
+
+1. It defines a `CONNECTION_STRING` to authenticate and connect the device (FifthAvenue) to the IoT Hub.
+2. The `get_telemetry()` function generates random sensor data, including ice thickness, temperatures, and snow accumulation, along with a live timestamp.
+3. In the `main()` function, the device connects to the IoT Hub and continuously sends telemetry data every 10 seconds using the `IoTHubDeviceClient`.
+4. Each message is printed to the console for tracking, and the script stops gracefully when interrupted (e.g., with Ctrl+C).
+5. The `if __name__ == "__main__":` block ensures the script runs when executed directly.
+
+## Install Required Library:
+Open the terminal and install the necessary library to simulate sensor data by running:
+
+```bash
+pip install azure-iot-device
+```
+
+## Update Connection String:
+Replace the `CONNECTION_STRING` in the script with the connection string for your IoT device.
+
+## Run the Script:
+Execute the script in the terminal to start sending data to the IoT Hub.
+
+## View Output:
+The script will simulate and display telemetry data for locations like Dow's Lake, Fifth Avenue, and NAC.  
+Each message will include details like:
+- Ice thickness
+- Surface temperature
+- Snow accumulation
+- External temperature
+
+## Stop the Simulation:
+Press `Ctrl + C` to stop the simulation. The script will handle this and disconnect gracefully.
+
+---
+
+# Configuring Azure Services:
+- Describe how to set up and run the IoT Hub and Stream Analytics job.
+
+# Accessing Stored Data:
+- Include steps to locate and view the processed data in Azure Blob Storage.
+
+---
+
+# Results:
+- Highlight key findings, such as:
+    - Aggregated data outputs (e.g., average ice thickness).
+- Include references to sample output files stored in Blob Storage.
+
+# Reflection:
+- Discuss any challenges faced during implementation and how they were addressed.
