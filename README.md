@@ -91,3 +91,111 @@ To ensure citizen safety, the City of Ottawa has implemented a real-time data-ga
      ```
 
 
+# Sample Output
+
+The processed data from Azure Stream Analytics is stored in JSON format. Examples of the aggregated output include:
+
+```json
+{
+    "DeviceId": "NAC",
+    "avgIceThickness": 28.759,
+    "maxSnowAccumulation": 19.2,
+    "EventTime": "2024-12-02T20:50:00.0000000Z"
+},
+{
+    "DeviceId": "FifthAvenue",
+    "avgIceThickness": 26.601,
+    "maxSnowAccumulation": 19.7,
+    "EventTime": "2024-12-02T20:50:00.0000000Z"
+},
+{
+    "DeviceId": "DowsLake",
+    "avgIceThickness": 26.302,
+    "maxSnowAccumulation": 19.9,
+    "EventTime": "2024-12-02T20:50:00.0000000Z"
+}
+```
+
+## Step 5: Save and Start the Job
+
+1. Save the Stream Analytics configuration and the SQL query.
+2. Click **Start** to activate the job and begin processing data in real time.
+
+## Step 6: Verify the Job and Output
+
+1. Navigate to the **Monitoring** tab in the Azure Portal.
+2. Confirm that the job is running and processing incoming data correctly.
+3. Access the configured Blob Storage container to check the processed data.
+
+### Azure Blob Storage:
+
+- **Data Storage Overview**
+- **Storage Location**: Processed data is stored in `iotoutput`, the central storage for all Stream Analytics job outputs.
+- **File Naming Convention**:
+    - Example: `0_14fc4657c9f445b9a58015d0c1d57689_1.json`.
+- **File Format**: Data is saved in **JSON**, a structured and machine-readable format.
+- **Benefits**: JSON allows easy parsing, querying, and integration with analytics tools and services.
+
+#### Data Content:
+
+Each JSON file contains aggregated data, including:
+
+- **DeviceId**: Identifies the sensor (e.g., dowslake, fifthavenue, nac).
+- **AvgIceThickness**: Average ice thickness during the aggregation window.
+- **MaxSnowAccumulation**: Maximum snow accumulation for the same window.
+- **EventTime**: Timestamp marking the end of the aggregation period.
+
+## Usage Instructions:
+
+### Running the IoT Sensor Simulation
+
+1. Install Python from the official website.
+
+```bash
+pip install azure-iot-device
+```
+
+2. Update the connection string in the Python script with the appropriate device connection string.
+3. Run the Python script to start sending sensor data to the IoT Hub.
+
+```python
+from datetime import datetime
+import time
+import random
+from azure.iot.device import IoTHubDeviceClient, Message
+
+CONNECTION_STRING = ""  # connection string for each sensor
+
+def get_telemetry():
+    return {
+        "location": "Fifth Avenue",
+        "iceThickness": round(random.uniform(5, 50), 2),
+        "surfaceTemperature": round(random.uniform(-10, 5), 1),
+        "snowAccumulation": round(random.uniform(0, 20), 1),
+        "externalTemperature": round(random.uniform(-20, 10), 1),
+        "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ")
+    }
+
+def main():
+    client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+    print("Sending telemetry to IoT Hub...")
+    try:
+        while True:
+            telemetry = get_telemetry()
+            message = Message(str(telemetry))
+            client.send_message(message)
+            print(f"Sent message: {message}")
+            time.sleep(10)
+    except KeyboardInterrupt:
+        print("Stopped sending messages.")
+    finally:
+        client.disconnect()
+
+if __name__ == "__main__":
+    main()
+```
+
+4. The script will simulate and display telemetry data for locations like Dow's Lake, Fifth Avenue, and NAC.
+
+To stop the simulation, press `Ctrl + C`. The script will handle the disconnection gracefully.
+
