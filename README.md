@@ -1,5 +1,10 @@
 
-# README.md
+# Real-time-Monitoring-System-for-Rideau-Canal-Skateway
+
+### **Group Number- 16** 
+- **Parth Patel**
+- **Karthik Urala**
+- **Dhruv Parmar**
 
 ## Scenario Description
 
