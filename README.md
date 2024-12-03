@@ -296,6 +296,9 @@ Press `Ctrl + C` to stop the simulation. The script will handle this and disconn
 
 **Explanation:** This query processes real-time data in Azure Stream Analytics. It calculates the average temperature and humidity from incoming data, grouped by the devices location, over 60-second intervals using a tumbling window. The results include the device ID, the average values, and the event timestamp. The processed data is then saved to a specified output location.
 
+**Preview or Download Files**
+Choose a file (e.g., a .json file) to view its contents directly in the Azure Portal.
+Alternatively, download the file to your local machine for in-depth analysis using tools like a text editor, JSON viewer, or data processing software.
 
 ![External Image](screenshot/9.png)
 
