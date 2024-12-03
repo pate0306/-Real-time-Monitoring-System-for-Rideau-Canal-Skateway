@@ -262,7 +262,7 @@ Press `Ctrl + C` to stop the simulation. The script will handle this and disconn
 ![External Image](screenshot/4.png)
 
 
-## 3. Configure Input for Stream Analytics Job
+## Configure Input for Stream Analytics Job
 1. In the Stream Analytics job, go to the **Inputs** section and click **Add**.
 2. Choose **IoT Hub** as the input source.
 3. Provide the following details:
@@ -274,6 +274,25 @@ Press `Ctrl + C` to stop the simulation. The script will handle this and disconn
 ![External Image](screenshot/6.png)
 
 ![External Image](screenshot/7.png)
+
+## Write the Stream Analytics Query
+Go to the Query tab and replace the default query with the following:
+
+ ```sql
+     SELECT
+         IoTHub.ConnectionDeviceId AS DeviceId,
+         AVG(iceThickness) AS AvgIceThickness,
+         MAX(snowAccumulation) AS MaxSnowAccumulation,
+         System.Timestamp AS EventTime
+     INTO
+         [output]
+     FROM
+         [input]
+     GROUP BY
+         IoTHub.ConnectionDeviceId, TumblingWindow(minute, 5)
+     ```
+
+This query processes real-time data in Azure Stream Analytics. It calculates the average temperature and humidity from incoming data, grouped by the devices location, over 60-second intervals using a tumbling window. The results include the device ID, the average values, and the event timestamp. The processed data is then saved to a specified output location.
 
 ![External Image](screenshot/8.png)
 
