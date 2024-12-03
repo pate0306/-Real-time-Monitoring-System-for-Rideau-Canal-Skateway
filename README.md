@@ -309,10 +309,10 @@ You can access the stored files by navigating to the `iotoutput` container in ou
 # Reflection:
 - Discuss any challenges faced during implementation and how they were addressed.
 
-# Experience
+### Experience
 
 The setup of the Stream Analytics job went smoothly without any problems. Each step, including configuring inputs, outputs, writing the query, and processing the data, was completed successfully.
 
-# Learning
+### Learning
 
 This project gave me useful experience in real-time data processing using Azure Stream Analytics. I learned how to integrate Azure services like IoT Hub and Blob Storage to build a complete data processing pipeline.
