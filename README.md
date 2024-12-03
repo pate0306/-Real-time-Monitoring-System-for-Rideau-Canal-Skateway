@@ -234,6 +234,26 @@ Press `Ctrl + C` to stop the simulation. The script will handle this and disconn
 
 ![External Image](screenshot/1.png)
 
+![External Image](screenshot/2.png)
+
+![External Image](screenshot/3.png)
+
+![External Image](screenshot/4.png)
+
+![External Image](screenshot/5.png)
+
+![External Image](screenshot/6.png)
+
+![External Image](screenshot/7.png)
+
+![External Image](screenshot/8.png)
+
+![External Image](screenshot/9.png)
+
+![External Image](screenshot/10.png)
+
+![External Image](screenshot/11.png)
+
 # Accessing Stored Data:
 - Include steps to locate and view the processed data in Azure Blob Storage.
 
