@@ -290,7 +290,7 @@ Press `Ctrl + C` to stop the simulation. The script will handle this and disconn
          [input]
      GROUP BY
          IoTHub.ConnectionDeviceId, TumblingWindow(minute, 5)
-     ```
+ ```
 
 ![External Image](screenshot/8.png)
 
