@@ -231,7 +231,8 @@ Press `Ctrl + C` to stop the simulation. The script will handle this and disconn
 ---
 
 # Configuring Azure Services:
-- Describe how to set up and run the IoT Hub and Stream Analytics job.
+
+![External Image](1.png)
 
 # Accessing Stored Data:
 - Include steps to locate and view the processed data in Azure Blob Storage.
