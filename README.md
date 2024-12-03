@@ -16,6 +16,10 @@ To ensure citizen safety, the City of Ottawa has implemented a real-time data-ga
 - **Azure Stream Analytics:** The data is analyzed and processed as required, such as calculating average ice thickness or snow accumulation on the surface.
 - **Azure Blob Storage:** The processed data is stored in CSV/JSON formats for future analysis.
 
+Data flow Diagram:
+
+![External Image](screenshot/Data-flow-diagram.png)
+
 ## Implementation Details
 
 ### IoT Sensor Simulation
