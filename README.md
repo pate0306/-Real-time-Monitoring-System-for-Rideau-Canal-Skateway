@@ -294,7 +294,7 @@ Press `Ctrl + C` to stop the simulation. The script will handle this and disconn
 
 ![External Image](screenshot/8.png)
 
-2. This query processes real-time data in Azure Stream Analytics. It calculates the average temperature and humidity from incoming data, grouped by the devices location, over 60-second intervals using a tumbling window. The results include the device ID, the average values, and the event timestamp. The processed data is then saved to a specified output location.
+This query processes real-time data in Azure Stream Analytics. It calculates the average temperature and humidity from incoming data, grouped by the devices location, over 60-second intervals using a tumbling window. The results include the device ID, the average values, and the event timestamp. The processed data is then saved to a specified output location.
 
 ![External Image](screenshot/9.png)
 
